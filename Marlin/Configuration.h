@@ -794,7 +794,7 @@
  *
  * With this option disabled, bang-bang will be used. BED_LIMIT_SWITCHING enables hysteresis.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 #if ENABLED(PIDTEMPBED)
       //#define MIN_BED_POWER 0   // Min power to improve PID stability (0..MAX_BED_POWER).
@@ -803,9 +803,9 @@
     
       // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
       // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-      #define DEFAULT_bedKp 10.00
-      #define DEFAULT_bedKi .023
-      #define DEFAULT_bedKd 305.4
+      #define DEFAULT_bedKp 295.00
+      #define DEFAULT_bedKi 35.65
+      #define DEFAULT_bedKd 610.21
     
       // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
