@@ -1282,7 +1282,7 @@
  * See https://hydraraptor.blogspot.com/2010/12/frequency-limit.html
  * Use M201 F<freq> S<min%> to change limits at runtime.
  */
-//#define XY_FREQUENCY_LIMIT      10 // (Hz) Maximum frequency of small zigzag infill moves. Set with M201 F<hertz>.
+#define XY_FREQUENCY_LIMIT      20 // (Hz) Maximum frequency of small zigzag infill moves. Set with M201 F<hertz>.
 #ifdef XY_FREQUENCY_LIMIT
       #define XY_FREQUENCY_MIN_PERCENT 5 // (%) Minimum FR percentage to apply. Set with M201 S<min%>.
 #endif
@@ -2295,7 +2295,7 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
       //#define EP_BABYSTEPPING                 // M293/M294 babystepping with EMERGENCY_PARSER support
       //#define BABYSTEP_WITHOUT_HOMING
@@ -3028,7 +3028,7 @@
       #define INTERPOLATE      true
     
       #if AXIS_IS_TMC_CONFIG(X)
-            #define X_CURRENT       780        // (mA) RMS current. Multiply by 1.414 for peak current.
+            #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
             #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for homing. (Typically lower than *_CURRENT.)
             #define X_MICROSTEPS     16        // 0..256
             #define X_RSENSE          0.11
@@ -3048,7 +3048,7 @@
       #endif
     
       #if AXIS_IS_TMC_CONFIG(Y)
-            #define Y_CURRENT       780
+            #define Y_CURRENT       800
             #define Y_CURRENT_HOME  Y_CURRENT
             #define Y_MICROSTEPS     16
             #define Y_RSENSE          0.11
