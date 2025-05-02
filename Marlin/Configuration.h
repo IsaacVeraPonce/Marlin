@@ -738,18 +738,23 @@
     
       #define MPC_INCLUDE_FAN                             // Model the fan speed?
     
+//     RECV: MPC Autotune finished! Put the constants below into Configuration.h
+// RECV: MPC_BLOCK_HEAT_CAPACITY 13.29
+// RECV: MPC_SENSOR_RESPONSIVENESS 0.1033
+// RECV: MPC_AMBIENT_XFER_COEFF 0.0985
+// RECV: MPC_AMBIENT_XFER_COEFF_FAN255 0.1241
       // Measured physical constants from M306
-      #define MPC_BLOCK_HEAT_CAPACITY { 16.7f }           // (J/K) Heat block heat capacities.
-      #define MPC_SENSOR_RESPONSIVENESS { 0.22f }         // (K/s per ∆K) Rate of change of sensor temperature from heat block.
-      #define MPC_AMBIENT_XFER_COEFF { 0.068f }           // (W/K) Heat transfer coefficients from heat block to room air with fan off.
+      #define MPC_BLOCK_HEAT_CAPACITY { 13.29f }           // (J/K) Heat block heat capacities.
+      #define MPC_SENSOR_RESPONSIVENESS { 0.1033f }         // (K/s per ∆K) Rate of change of sensor temperature from heat block.
+      #define MPC_AMBIENT_XFER_COEFF { 0.0985f }           // (W/K) Heat transfer coefficients from heat block to room air with fan off.
       #if ENABLED(MPC_INCLUDE_FAN)
-            #define MPC_AMBIENT_XFER_COEFF_FAN255 { 0.097f }  // (W/K) Heat transfer coefficients from heat block to room air with fan on full.
+            #define MPC_AMBIENT_XFER_COEFF_FAN255 { 0.1241f }  // (W/K) Heat transfer coefficients from heat block to room air with fan on full.
       #endif
     
       // For one fan and multiple hotends MPC needs to know how to apply the fan cooling effect.
       #if ENABLED(MPC_INCLUDE_FAN)
             //#define MPC_FAN_0_ALL_HOTENDS
-            //#define MPC_FAN_0_ACTIVE_HOTEND
+            #define MPC_FAN_0_ACTIVE_HOTEND
       #endif
     
       // Filament Heat Capacity (joules/kelvin/mm)
@@ -794,18 +799,18 @@
  *
  * With this option disabled, bang-bang will be used. BED_LIMIT_SWITCHING enables hysteresis.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 #if ENABLED(PIDTEMPBED)
       //#define MIN_BED_POWER 0   // Min power to improve PID stability (0..MAX_BED_POWER).
                                   // Get the power from the temperature report ('M105' => B@:nnn) and try P*2-20 to P*2-10.
       //#define PID_BED_DEBUG     // Print Bed PID debug data to the serial port. Use 'M303 D' to enable/disable.
-    
+    //SENT: N88 G1 X103.099 Y121.865 E.03631*110
       // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
       // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-      #define DEFAULT_bedKp 104.30
-      #define DEFAULT_bedKi 20.06
-      #define DEFAULT_bedKd 361.59
+      #define DEFAULT_bedKp 106.41
+      #define DEFAULT_bedKi 21.26
+      #define DEFAULT_bedKd 355.06
     
       // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -944,8 +949,8 @@
 
 #define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders
 #define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed
-#define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber
-#define THERMAL_PROTECTION_COOLER  // Enable thermal protection for the laser cooling
+//#define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber
+//#define THERMAL_PROTECTION_COOLER  // Enable thermal protection for the laser cooling
 
 //===========================================================================
 //============================= Mechanical Settings =========================
@@ -1231,7 +1236,7 @@
 #define X_MAX_ENDSTOP_HIT_STATE HIGH
 #define Y_MIN_ENDSTOP_HIT_STATE LOW
 #define Y_MAX_ENDSTOP_HIT_STATE HIGH
-#define Z_MIN_ENDSTOP_HIT_STATE LOW
+#define Z_MIN_ENDSTOP_HIT_STATE HIGH
 #define Z_MAX_ENDSTOP_HIT_STATE LOW
 #define I_MIN_ENDSTOP_HIT_STATE HIGH
 #define I_MAX_ENDSTOP_HIT_STATE HIGH
@@ -1245,7 +1250,7 @@
 #define V_MAX_ENDSTOP_HIT_STATE HIGH
 #define W_MIN_ENDSTOP_HIT_STATE HIGH
 #define W_MAX_ENDSTOP_HIT_STATE HIGH
-#define Z_MIN_PROBE_ENDSTOP_HIT_STATE LOW
+#define Z_MIN_PROBE_ENDSTOP_HIT_STATE HIGH
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
