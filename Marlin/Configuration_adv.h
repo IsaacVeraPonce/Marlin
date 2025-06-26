@@ -309,7 +309,7 @@
  */
 #if ALL(HAS_HOTEND, THERMAL_PROTECTION_HOTENDS)
       #define THERMAL_PROTECTION_PERIOD        40 // (seconds)
-      #define THERMAL_PROTECTION_HYSTERESIS     15 // (°C)
+      #define THERMAL_PROTECTION_HYSTERESIS     20 // (°C)
     
       //#define ADAPTIVE_FAN_SLOWING              // Slow down the part-cooling fan if the temperature drops
       #if ENABLED(ADAPTIVE_FAN_SLOWING)
@@ -331,7 +331,7 @@
        * and/or decrease WATCH_TEMP_INCREASE. WATCH_TEMP_INCREASE should not be set
        * below 2.
        */
-      #define WATCH_TEMP_PERIOD  40               // (seconds)
+      #define WATCH_TEMP_PERIOD  60               // (seconds)
       #define WATCH_TEMP_INCREASE 2               // (°C)
 #endif
 
@@ -1598,7 +1598,7 @@
        * We encourage you to take advantage of this new feature and we also
        * respectfully request that you retain the unmodified Marlin boot screen.
        */
-      #define SHOW_BOOTSCREEN                 // Show the Marlin bootscreen on startup. ** ENABLE FOR PRODUCTION **
+     // #define SHOW_BOOTSCREEN                 // Show the Marlin bootscreen on startup. ** ENABLE FOR PRODUCTION **
       #if ENABLED(SHOW_BOOTSCREEN)
             #define BOOTSCREEN_TIMEOUT 3000       // (ms) Total Duration to display the boot screen(s)
             #if ANY(HAS_MARLINUI_U8GLIB, TFT_COLOR_UI)
@@ -2281,7 +2281,7 @@
  * NOTE: This method is less reliable as it can only catch hangups while
  * interrupts are enabled.
  */
-#define USE_WATCHDOG
+//efine USE_WATCHDOG
 #if ENABLED(USE_WATCHDOG)
       //#define WATCHDOG_RESET_MANUAL
 #endif
@@ -2346,7 +2346,7 @@
  *
  * See https://marlinfw.org/docs/features/lin_advance.html for full instructions.
  */
-#define LIN_ADVANCE
+//#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
       #if ENABLED(DISTINCT_E_FACTORS)
             #define ADVANCE_K { 0.22 }    // (mm) Compression length per 1mm/s extruder speed, per extruder
@@ -2546,7 +2546,7 @@
 //
 // G2/G3 Arc Support
 //
-#define ARC_SUPPORT                   // Requires ~3226 bytes
+//efine ARC_SUPPORT                   // Requires ~3226 bytes
 #if ENABLED(ARC_SUPPORT)
       #define MIN_ARC_SEGMENT_MM      0.1 // (mm) Minimum length of each arc segment
       #define MAX_ARC_SEGMENT_MM      1.0 // (mm) Maximum length of each arc segment
@@ -3028,7 +3028,7 @@
       #define INTERPOLATE      true
     
       #if AXIS_IS_TMC_CONFIG(X)
-            #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
+            #define X_CURRENT       760        // (mA) RMS current. Multiply by 1.414 for peak current.
             #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for homing. (Typically lower than *_CURRENT.)
             #define X_MICROSTEPS     16        // 0..256
             #define X_RSENSE          0.11
@@ -3048,7 +3048,7 @@
       #endif
     
       #if AXIS_IS_TMC_CONFIG(Y)
-            #define Y_CURRENT       800
+            #define Y_CURRENT       760
             #define Y_CURRENT_HOME  Y_CURRENT
             #define Y_MICROSTEPS     16
             #define Y_RSENSE          0.11
